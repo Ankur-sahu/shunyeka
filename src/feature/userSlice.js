@@ -8,12 +8,11 @@ export const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
-        storeUser: (state,action) => {
+        storeUser: (state, action) => {
             state.users = action.payload
-            console.log(state.users,"...after calling")
         },
-        deleteUserFromList: (state,action) =>{
-            state.users.splice(action.payload,1)
+        deleteUserFromList: (state, action) => {
+            state.users.splice(action.payload, 1)
         },
     },
 })

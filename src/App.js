@@ -12,16 +12,16 @@ function App() {
   return (
 
     <BrowserRouter>
-        <Navbar />
-        <ToastContainer
-          position="top-center"
-          autoClose={3000} />
-        <Routes>
-          <Route path='/' element={<Dashboard />} />
-          <Route path='/form' element={<UserForm/>} />
-          <Route path='/profile/:id' element={<Profile/>} />
-          <Route path='/*' element={<main><div className='display-row container'>Page Not Found</div></main>} />
-        </Routes>
+      <Navbar />
+      <ToastContainer
+        position="top-center"
+        autoClose={3000} />
+      <Routes>
+        <Route path='/' element={<Dashboard />} />
+        <Route path='/form' element={<UserForm />} />
+        <Route path='/profile/:id' element={<Profile />} />
+        <Route path='/*' element={<main><div className='display-row container'>Page Not Found</div></main>} />
+      </Routes>
     </BrowserRouter>
   );
 }

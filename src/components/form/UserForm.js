@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Input from "../common/Input";
 import Button from "../common/Button";
 import { validationInput } from "../../utils/validation/validateInput";
-// import { register } from "../../services/api";
 import { toast } from 'react-toastify';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { createUser, getUser, updateUser } from "../../services/api";
@@ -10,7 +9,6 @@ import { createUser, getUser, updateUser } from "../../services/api";
 const UserForm = () => {
     const negivate = useNavigate()
     const userId = useLocation().state?.id
-    // console.log(userId)
     const initValue = {
         name: "",
         email: "",
@@ -32,31 +30,31 @@ const UserForm = () => {
         const errorMsg = { ...validateFrom }
         validationInput(formData, errorMsg)
         const { email, name, phone } = errorMsg
-        if (email || name || phone ) {
+        if (email || name || phone) {
             setValidateForm(errorMsg)
             return
         }
 
-        const resp = await userId?updateUser(userId,userInfo):createUser(userInfo)
-        if(resp){
+        const resp = await userId ? updateUser(userId, userInfo) : createUser(userInfo)
+        if (await resp) {
             toast.success("Successfully Submited")
             navigate('/')
         }
     }
 
-    const getUserById = async()=>{
+    const getUserById = async () => {
         const userProfile = await getUser(userId)
         setUserInfo(userProfile)
     }
     useEffect(() => {
-        if(userId){
+        if (userId) {
             getUserById()
         }
     }, [])
     return (
         <main className="display-row">
             <div className="display-col container">
-                <h1>{userId?"Update User":"Create User"}</h1>
+                <h1>{userId ? "Update User" : "Create User"}</h1>
                 <form onSubmit={registerUser} style={{ width: "80%" }}>
                     <Input
                         type="text"
@@ -83,19 +81,11 @@ const UserForm = () => {
                         name="phone"
                         errMsg={validateFrom.phone}
                     />
-                    {/* <Input
-                        type="password"
-                        label="Confirm Password"
-                        value={userInfo.confirm_password}
-                        onChange={(e) => handleInput(e)}
-                        name="confirm_password"
-                        errMsg={validateFrom.confirm_password}
-                    /> */}
                     <div>
-                    <Button onClick={()=>negivate(`/`)} >Cancel</Button>
-                    <Button type="submit">{userId?"Update":"Create"}</Button>
+                        <Button onClick={() => negivate(`/`)} >Cancel</Button>
+                        <Button type="submit">{userId ? "Update" : "Create"}</Button>
                     </div>
-                    
+
                 </form>
             </div>
         </main>

@@ -24,7 +24,7 @@ app.use('/users',user)
 app.use('/',(req,res,next)=>{
     console.log("sending react app")
     res.sendFile(path.join(__dirname,'build','index.html'))
-    next()
+    // next()
 })
 
 app.listen(port,()=>console.log(`server is running on port no ${port}`))

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect} from "react"
 import { useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux';
 import { storeUser } from '../../feature/userSlice';
@@ -14,8 +14,6 @@ const Dashboard = () => {
         const userList = await getUsers()
         dispatch(storeUser(userList))
     }
-
-    // const navigate = useNavigate()
 
     useEffect(() => {
         fetchUser()
